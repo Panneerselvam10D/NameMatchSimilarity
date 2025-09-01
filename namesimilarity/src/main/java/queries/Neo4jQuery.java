@@ -82,7 +82,7 @@ public class Neo4jQuery {
 
 
 
-    private static final String URI = "bolt://38.242.220.73:16487"; // 194.163.150.172 or 38.242.220.73:7687
+    private static final String URI = "bolt://194.163.150.172:7687"; // 194.163.150.172 or 38.242.220.73:7687
     private static final String UserName = "neo4j";
     private static final String Password = "password";
 
