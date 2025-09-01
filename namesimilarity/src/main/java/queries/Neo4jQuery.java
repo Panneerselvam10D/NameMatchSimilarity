@@ -25,7 +25,15 @@ public class Neo4jQuery {
 
     public static void main(String[] args) {
         double threshold = 80.00;
-        String InputExcelFilePath = "/home/decoders/Music/TEST_3000.xlsx";
+
+//        String InputExcelFilePath = "/home/decoders/Music/TEST_3000.xlsx";
+        if (args.length < 2) {
+            System.out.println("Usage: java -jar myapp.jar <inputFile> <outputDir>");
+            System.exit(1);
+        }
+
+        String InputExcelFilePath = args[0];
+        String outputDir = args[1];
 
 //        String inputName = "Oleksander Kostyantynovych Akimov";
 //		  DoNameSimilarityAgainstSDNDB(inputName, threshold);
@@ -46,7 +54,7 @@ public class Neo4jQuery {
 //					}
 
                     try {
-                        DoNameSimilarityAgainstSDNDB(inputName, threshold);
+                        DoNameSimilarityAgainstSDNDB(inputName, threshold,outputDir);
                     }catch(Exception e) {
                         System.out.println("Exception For The Following Input : " +  inputName);
                     }
@@ -848,7 +856,7 @@ public class Neo4jQuery {
         }
         return matchedRecords;
     }
-    private static void DoNameSimilarityAgainstSDNDB(String inputName, double threshold){
+    private static void DoNameSimilarityAgainstSDNDB(String inputName, double threshold,String outputDir){
 
         List<SDNNameList> sdnNames = new ArrayList<>();
 
@@ -875,7 +883,7 @@ public class Neo4jQuery {
         }
 
         System.out.println("Total Matched Records: " + matchedRecords.size());
-        writeResultsToExcel(inputName, matchedRecords, "/home/decoders/Music/matched_results.xlsx");
+        writeResultsToExcel(inputName, matchedRecords, outputDir);
 
 
         endTime = System.nanoTime(); // End time
